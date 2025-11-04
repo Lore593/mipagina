@@ -1,60 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&display=swap');
 
+/* === PALETA Y VARIABLES === */
 :root {
   --negro: #000000;
+  --negro-suave: #1a1a1a;
   --dorado: #d4af37;
   --dorado-claro: #ffd700;
-  --texto: #ffffff;
+  --texto-blanco: #ffffff;
   --brillo-dorado: rgba(212, 175, 55, 0.6);
 }
 
-/* Fondo y tipografía principal */
+/* === FONDO Y ESTRUCTURA === */
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #000000, #1a1a1a);
+  background: linear-gradient(135deg, var(--negro), var(--negro-suave));
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: 'Great Vibes', cursive;
-  overflow-x: hidden;
-  color: var(--texto);
+  color: var(--texto-blanco);
   text-align: center;
   padding: 20px;
   position: relative;
+  overflow-x: hidden;
 }
 
-/* Logo */
+/* === LOGO === */
 .logo {
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 90px;
+  width: 80px;
   height: auto;
   opacity: 0.95;
   filter: drop-shadow(0 0 10px var(--brillo-dorado));
+  transition: transform 0.3s ease;
 }
 
-/* Título principal */
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* === TÍTULO Y SUBTÍTULO === */
 .title {
   font-family: 'Parisienne', cursive;
   font-size: 3rem;
-  color: var(--texto);
-  text-shadow: 0 0 15px var(--brillo-dorado), 0 0 25px var(--dorado-claro);
-  margin-bottom: 40px;
+  color: var(--texto-blanco);
+  text-shadow: 0 0 10px var(--brillo-dorado), 0 0 25px var(--dorado);
+  margin-top: 100px;
+  margin-bottom: 30px;
   animation: float 3s ease-in-out infinite;
 }
 
-/* Subtítulo */
 .subtitle {
-  font-size: 1.8rem;
-  color: var(--texto);
+  font-size: 1.6rem;
+  color: var(--texto-blanco);
   text-shadow: 0 0 10px var(--brillo-dorado);
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-/* Contenedor de botones */
+/* === BOTONES === */
 .buttons {
   display: flex;
   flex-wrap: wrap;
@@ -62,7 +69,6 @@ body {
   justify-content: center;
 }
 
-/* Botones principales */
 .btn {
   font-family: 'Great Vibes', cursive;
   font-size: 1.5rem;
@@ -84,7 +90,7 @@ body {
   box-shadow: 0 0 25px var(--dorado-claro);
 }
 
-/* Botón de WhatsApp */
+/* === BOTÓN DE WHATSAPP === */
 .whatsapp-btn {
   display: inline-block;
   margin-top: 25px;
@@ -106,7 +112,7 @@ body {
   box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
 }
 
-/* Botón volver */
+/* === BOTÓN VOLVER === */
 .back-btn {
   display: inline-block;
   margin-top: 30px;
@@ -127,31 +133,47 @@ body {
   box-shadow: 0 0 25px var(--dorado-claro);
 }
 
-/* Animación del título flotante */
+/* === ANIMACIÓN DEL TÍTULO === */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
-/* 💎 Adaptación móvil */
+/* === MAPA === */
+.map-container iframe {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 20px var(--brillo-dorado);
+}
+
+/* === RESPONSIVIDAD === */
 @media (max-width: 600px) {
+  .logo {
+    width: 55px;
+    top: 10px;
+    left: 10px;
+  }
+
   .title {
-    font-size: 2.3rem;
+    font-size: 2.4rem;
+    margin-top: 80px;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
   }
 
   .btn {
     font-size: 1.2rem;
-    padding: 10px 28px;
+    padding: 10px 25px;
   }
 
   .whatsapp-btn, .back-btn {
     font-size: 0.95rem;
-    padding: 10px 22px;
+    padding: 10px 20px;
   }
 
-  .logo {
-    width: 70px;
-    top: 15px;
-    left: 15px;
+  iframe {
+    height: 220px;
   }
 }
