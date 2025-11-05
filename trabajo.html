@@ -30,5 +30,40 @@
 
     <a href="index.html" class="back-btn">Volver</a>
   </div>
+
+  <!-- Lightbox -->
+<div id="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-img" src="" alt="Vista ampliada">
+</div>
+
+<script>
+  const images = document.querySelectorAll('.gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.querySelector('.lightbox-img');
+  const closeBtn = document.querySelector('.close');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+    });
+  });
+
+  // Cerrar al hacer clic fuera o en la X
+  lightbox.addEventListener('click', (e) => {
+    if (e.target !== lightboxImg) {
+      lightbox.style.display = 'none';
+    }
+  });
+
+  // Cerrar con tecla Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      lightbox.style.display = 'none';
+    }
+  });
+</script>
+
 </body>
 </html>
