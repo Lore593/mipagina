@@ -6,76 +6,80 @@
   <title>Contacto - Lore Rodriguez’s Makeup</title>
 
   <!-- Fuentes -->
-  <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Estilos -->
   <link rel="stylesheet" href="contacto.css">
 </head>
 
 <body>
+  <!-- LOGO -->
   <img src="Img.PNG" alt="Logo Lore Rodriguez" class="logo">
 
-  <div class="container">
+  <!-- SECCIÓN SUPERIOR -->
+  <header class="header">
     <h1 class="title">Contáctame</h1>
-
-    <!-- NUEVO BOTÓN DESTACADO -->
     <a href="#" class="main-btn">Reserva tu cita</a>
+  </header>
 
-    <div class="content">
-      <div class="social-section">
-        <h2 class="subtitle">Encuéntrame aquí</h2>
+  <!-- CONTENEDOR PRINCIPAL -->
+  <section class="main-content">
+    <!-- REDES -->
+    <div class="social-section">
+      <h2 class="subtitle">Encuéntrame aquí</h2>
 
-        <a href="https://www.facebook.com/lorerodriguezmakeup?mibextid=LQQJ4d" target="_blank" class="social-btn">
-          <img src="Facebook.png" alt="Facebook">
-          <span>Lore Rodriguez’s Makeup - Página de Facebook</span>
-        </a>
+      <a href="https://www.facebook.com/lorerodriguezmakeup?mibextid=LQQJ4d" target="_blank" class="social-btn">
+        <img src="Facebook.png" alt="Facebook">
+        <span>Lore Rodriguez’s Makeup - Facebook</span>
+      </a>
 
-        <a href="https://www.instagram.com/lorerodriguez_makeup/?igsh=MTBpNHJvNmt5NjRhcA%3D%3D&utm_source=qr#" target="_blank" class="social-btn">
-          <img src="Instagram.png" alt="Instagram">
-          <span>Lore Rodriguez’s Makeup - Página de Instagram</span>
-        </a>
+      <a href="https://www.instagram.com/lorerodriguez_makeup/?igsh=MTBpNHJvNmt5NjRhcA%3D%3D&utm_source=qr#" target="_blank" class="social-btn">
+        <img src="Instagram.png" alt="Instagram">
+        <span>Lore Rodriguez’s Makeup - Instagram</span>
+      </a>
 
-        <a href="https://api.whatsapp.com/send?phone=593969426732" target="_blank" class="social-btn">
-          <img src="Whatsapp.png" alt="WhatsApp">
-          <span>Lore Rodriguez’s Makeup - Contacta conmigo</span>
-        </a>
+      <a href="https://api.whatsapp.com/send?phone=593969426732" target="_blank" class="social-btn">
+        <img src="Whatsapp.png" alt="WhatsApp">
+        <span>Escríbeme por WhatsApp</span>
+      </a>
 
-        <a href="https://www.tiktok.com/@lorerodriguezmakeup?_r=1&_t=ZM-918qpDYFwku" target="_blank" class="social-btn">
-          <img src="Tiktok.png" alt="Tiktok">
-          <span>Lore Rodriguez’s Makeup - Página de Tiktok</span>
-        </a>
+      <a href="https://www.tiktok.com/@lorerodriguezmakeup?_r=1&_t=ZM-918qpDYFwku" target="_blank" class="social-btn">
+        <img src="Tiktok.png" alt="Tiktok">
+        <span>Lore Rodriguez’s Makeup - TikTok</span>
+      </a>
 
-        <a href="#" class="social-btn correo">
-          <img src="Correo.png" alt="Correo">
-          <span>loorroberto8633@gmail.com</span>
-        </a>
+      <a href="mailto:loorroberto8633@gmail.com" class="social-btn correo">
+        <img src="Correo.png" alt="Correo">
+        <span>loorroberto8633@gmail.com</span>
+      </a>
 
-        <a href="index.html" class="back-btn">Volver</a>
-      </div>
-
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.1655484121875!2d-80.4703337!3d-1.0364484999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902bed0047e191c3%3A0xb0748684fe1c34e9!2sLore%20Rodr%C3%ADguez%20Makeup!5e0!3m2!1ses!2ses!4v1762276878163!5m2!1ses!2ses"
-          allowfullscreen=""
-          loading="lazy">
-        </iframe>
-      </div>
+      <a href="index.html" class="back-btn">Volver</a>
     </div>
-  </div>
-  
+
+    <!-- MAPA -->
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.1655484121875!2d-80.4703337!3d-1.0364484999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902bed0047e191c3%3A0xb0748684fe1c34e9!2sLore%20Rodr%C3%ADguez%20Makeup!5e0!3m2!1ses!2ses!4v1762276878163!5m2!1ses!2ses"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- SCRIPT: para pantalla completa del mapa -->
   <script>
-  // Al hacer clic en el mapa, entra o sale del modo pantalla completa
-  document.querySelector('.map-container').addEventListener('click', function() {
-    if (!document.fullscreenElement) {
-      this.requestFullscreen().catch(err => {
-        console.warn(`No se pudo activar el modo pantalla completa: ${err.message}`);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  });
-</script>
+    document.querySelector('.map-container').addEventListener('click', function() {
+      if (!document.fullscreenElement) {
+        this.requestFullscreen().catch(err => {
+          console.warn(`No se pudo activar el modo pantalla completa: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  </script>
 
 </body>
 </html>
+
 
