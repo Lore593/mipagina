@@ -1,14 +1,17 @@
+/* === IMPORTAR FUENTES === */
 @import url('https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@400;500;600&display=swap');
 
+/* === VARIABLES === */
 :root {
   --negro: #000000;
   --dorado: #d4af37;
   --dorado-claro: #f7e27e;
   --brillo-dorado: rgba(255, 215, 0, 0.6);
   --texto-blanco: #ffffff;
+  --verde-whatsapp: #25D366;
 }
 
-/* === GENERAL === */
+/* === ESTILO GENERAL === */
 body {
   margin: 0;
   padding: 0;
@@ -19,9 +22,9 @@ body {
   color: var(--texto-blanco);
   text-align: center;
   min-height: 100vh;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-/* === LOGO === */
 .logo {
   position: fixed;
   top: 15px;
@@ -38,105 +41,108 @@ body {
 
 /* === CABECERA === */
 .header {
-  margin-top: 120px;
+  margin-top: 100px;
   margin-bottom: 40px;
+  animation: fadeInDown 1s ease both;
 }
 .title {
   font-family: 'Italianno', cursive;
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   color: var(--dorado-claro);
+  margin-bottom: 10px;
   text-shadow: 0 0 20px var(--brillo-dorado);
 }
 .subtitle {
+  font-size: 1.3rem;
+  font-weight: 400;
   color: var(--dorado-claro);
-  font-weight: 500;
   text-shadow: 0 0 10px var(--brillo-dorado);
 }
 
-/* === TARJETAS SERVICIOS === */
+/* === SECCIONES DEL FORM === */
+.form-section {
+  margin: 30px auto;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.section-title {
+  font-size: 1.6rem;
+  color: var(--dorado-claro);
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px var(--brillo-dorado);
+}
+
+/* === TARJETAS DE SERVICIO === */
 .servicios-container {
   display: flex;
   flex-wrap: wrap;
+  gap: 15px;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 40px;
 }
 .servicio-card {
-  background: rgba(0,0,0,0.6);
-  padding: 25px 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px var(--brillo-dorado);
-  cursor: pointer;
+  background: rgba(255,255,255,0.05);
+  padding: 20px 25px;
+  border-radius: 15px;
   min-width: 180px;
-  font-size: 1.1rem;
+  cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(212,175,55,0.2);
 }
 .servicio-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 35px var(--dorado-claro);
+  box-shadow: 0 0 30px var(--brillo-dorado);
+}
+
+/* Animación sutil al seleccionar */
+@keyframes pulseSelect {
+  0% { transform: scale(1); box-shadow: 0 0 20px var(--brillo-dorado); }
+  50% { transform: scale(1.08); box-shadow: 0 0 35px var(--dorado-claro); }
+  100% { transform: scale(1); box-shadow: 0 0 25px var(--dorado-claro); }
 }
 .servicio-card.selected {
   background: var(--dorado-claro);
   color: #000;
-  box-shadow: 0 0 35px var(--dorado);
+  animation: pulseSelect 0.4s ease;
 }
 
-/* === FORMULARIO FECHA/HORA === */
-.reserva-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto 60px;
-  background: rgba(0,0,0,0.6);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 25px var(--brillo-dorado);
-}
-.label {
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--dorado-claro);
-  text-align: left;
-}
-input[type="date"], input[type="time"] {
-  padding: 12px 15px;
-  border-radius: 12px;
+/* === INPUTS DE FECHA Y HORA === */
+input[type="date"],
+input[type="time"] {
+  padding: 10px 15px;
+  border-radius: 10px;
   border: none;
   font-size: 1rem;
-  font-family: 'Cormorant Garamond', serif;
-  outline: none;
-  width: 100%;
-}
-
-/* === RESUMEN DINÁMICO === */
-.resumen {
-  font-size: 1.1rem;
-  color: var(--dorado-claro);
-  font-weight: 500;
   text-align: center;
-  margin-top: 10px;
-  text-shadow: 0 0 10px var(--brillo-dorado);
-}
-
-/* === BOTÓN RESERVA === */
-#reservaBtn {
-  margin-top: 10px;
-  padding: 14px;
-  border-radius: 40px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(145deg, var(--dorado), var(--dorado-claro));
-  color: #000;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0 20px var(--brillo-dorado);
+  width: 60%;
+  max-width: 200px;
+  outline: none;
+  box-shadow: 0 0 15px rgba(212,175,55,0.3);
   transition: all 0.3s ease;
 }
-#reservaBtn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 35px var(--dorado-claro);
+input[type="date"]:focus,
+input[type="time"]:focus {
+  box-shadow: 0 0 25px var(--brillo-dorado);
+}
+
+/* === BOTÓN === */
+.main-btn {
+  background: linear-gradient(145deg, var(--dorado), var(--dorado-claro));
+  color: #000;
+  font-weight: 600;
+  font-size: 1.3rem;
+  padding: 14px 45px;
+  border-radius: 40px;
+  box-shadow: 0 0 25px var(--brillo-dorado);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.main-btn:hover {
+  transform: scale(1.08);
+  background: linear-gradient(145deg, var(--dorado-claro), var(--dorado));
+  box-shadow: 0 0 40px var(--dorado-claro);
 }
 
 /* === ANIMACIONES === */
@@ -144,14 +150,17 @@ input[type="date"], input[type="time"] {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* === RESPONSIVE === */
 @media (max-width: 600px) {
   .title { font-size: 3rem; }
-  .subtitle { font-size: 1rem; }
-  .servicio-card { min-width: 140px; padding: 20px 15px; font-size: 1rem; }
-  .reserva-form { padding: 20px; }
-  #reservaBtn { font-size: 1.1rem; padding: 12px; }
+  .subtitle { font-size: 1.1rem; }
+  .servicio-card { min-width: 140px; padding: 15px; }
+  input[type="date"], input[type="time"] { width: 70%; max-width: 160px; }
 }
 
 
