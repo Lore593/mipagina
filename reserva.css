@@ -1,0 +1,123 @@
+/* === IMPORTAR FUENTES === */
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@400;500;600&display=swap');
+
+/* === VARIABLES === */
+:root {
+  --negro: #000000;
+  --dorado: #d4af37;
+  --dorado-claro: #f7e27e;
+  --brillo-dorado: rgba(255, 215, 0, 0.6);
+  --texto-blanco: #ffffff;
+}
+
+/* === ESTILO GENERAL === */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(40,40,40,0.9)), url('fondo.png') no-repeat center center fixed;
+  background-size: cover;
+  background-blend-mode: darken;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--texto-blanco);
+  text-align: center;
+  min-height: 100vh;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* === LOGO === */
+.logo {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 70px;
+  filter: drop-shadow(0 0 10px var(--brillo-dorado));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  z-index: 10;
+}
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px var(--dorado-claro));
+}
+
+/* === SECCIÓN SUPERIOR === */
+.header {
+  text-align: center;
+  margin-top: 120px;
+  margin-bottom: 60px;
+  animation: fadeInDown 1s ease both;
+}
+.title {
+  font-family: 'Italianno', cursive;
+  font-size: 3.8rem;
+  color: var(--dorado-claro);
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px var(--brillo-dorado);
+  font-weight: 400;
+}
+
+/* === FORMULARIO DE RESERVA === */
+.reserva-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.6);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px var(--brillo-dorado);
+}
+
+.label {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--dorado-claro);
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+select, input[type="date"], input[type="time"] {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  outline: none;
+  width: 100%;
+}
+
+#reservaBtn {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(145deg, var(--dorado), var(--dorado-claro));
+  color: #000;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px var(--brillo-dorado);
+  transition: all 0.3s ease;
+}
+#reservaBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px var(--dorado-claro);
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .title { font-size: 3rem; }
+  .reserva-form { padding: 20px; gap: 15px; }
+  #reservaBtn { font-size: 1.1rem; padding: 12px; }
+}
