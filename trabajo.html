@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mi trabajo - Lore Rodriguez’s Makeup</title>
+
+  <!-- CARGA CORRECTA DE FUENTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="trabajo.css">
-  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
   <img src="Img.PNG" alt="Logo Lore Rodriguez" class="logo">
@@ -14,56 +18,83 @@
     <h1 class="title">Mi trabajo</h1>
 
     <div class="gallery">
-      <img src="Img1.JPG" alt="Trabajo 1">
-      <img src="Img2.JPG" alt="Trabajo 2">
-      <img src="Img3.JPG" alt="Trabajo 3">
-      <img src="Img4.JPG" alt="Trabajo 4">
-      <img src="Img5.JPG" alt="Trabajo 5">
-      <img src="Img6.JPG" alt="Trabajo 6">
-      <img src="Img7.JPG" alt="Trabajo 7">
-      <img src="Img8.JPG" alt="Trabajo 8">
-      <img src="Img9.JPG" alt="Trabajo 9">
-      <img src="Img10.JPG" alt="Trabajo 10">
-      <img src="Img11.JPG" alt="Trabajo 11">
-      <img src="Img12.JPG" alt="Trabajo 12">
+      <img src="Img1.JPG" alt="Trabajo 1" data-caption="Maquillaje social">
+      <img src="Img2.JPG" alt="Trabajo 2" data-caption="Novia elegante">
+      <img src="Img3.JPG" alt="Trabajo 3" data-caption="Editorial">
+      <img src="Img4.JPG" alt="Trabajo 4" data-caption="Natural glow">
+      <img src="Img5.JPG" alt="Trabajo 5" data-caption="Smokey intenso">
+      <img src="Img6.JPG" alt="Trabajo 6" data-caption="Dramático y chic">
+      <img src="Img7.JPG" alt="Trabajo 7" data-caption="Día a día">
+      <img src="Img8.JPG" alt="Trabajo 8" data-caption="Makeup artístico">
+      <img src="Img9.JPG" alt="Trabajo 9" data-caption="Novia romántica">
+      <img src="Img10.JPG" alt="Trabajo 10" data-caption="Color pop">
+      <img src="Img11.JPG" alt="Trabajo 11" data-caption="Beauty editorial">
+      <img src="Img12.JPG" alt="Trabajo 12" data-caption="Glam noche">
     </div>
 
     <a href="index.html" class="back-btn">Volver</a>
   </div>
 
-  <!-- Lightbox -->
-<div id="lightbox">
-  <span class="close">&times;</span>
-  <img class="lightbox-img" src="" alt="Vista ampliada">
-</div>
+  <!-- Lightbox modal -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-content" role="dialog" aria-modal="true">
+      <button class="close" aria-label="Cerrar">&times;</button>
+      <img class="lightbox-img" src="" alt="">
+      <p class="caption"></p>
+    </div>
+  </div>
 
-<script>
-  const images = document.querySelectorAll('.gallery img');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.querySelector('.lightbox-img');
-  const closeBtn = document.querySelector('.close');
+  <!-- JS del lightbox -->
+  <script>
+    (function(){
+      const images = document.querySelectorAll('.gallery img');
+      const lightbox = document.getElementById('lightbox');
+      const content = document.querySelector('.lightbox-content');
+      const lightboxImg = document.querySelector('.lightbox-img');
+      const caption = document.querySelector('.caption');
+      const closeBtn = document.querySelector('.close');
 
-  images.forEach(img => {
-    img.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
-      lightboxImg.src = img.src;
-    });
-  });
+      function openLightbox(src, alt, captionText) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        caption.textContent = captionText || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // bloquear scroll
+        // focus para accesibilidad
+        closeBtn.focus();
+      }
 
-  // Cerrar al hacer clic fuera o en la X
-  lightbox.addEventListener('click', (e) => {
-    if (e.target !== lightboxImg) {
-      lightbox.style.display = 'none';
-    }
-  });
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = ''; // restaurar scroll
+        lightboxImg.src = '';
+        caption.textContent = '';
+      }
 
-  // Cerrar con tecla Esc
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      lightbox.style.display = 'none';
-    }
-  });
-</script>
+      images.forEach(img => {
+        img.addEventListener('click', (e) => {
+          openLightbox(img.src, img.alt, img.dataset.caption || img.alt);
+        });
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') openLightbox(img.src, img.alt, img.dataset.caption || img.alt);
+        });
+      });
 
+      // cerrar al pulsar la X
+      closeBtn.addEventListener('click', closeLightbox);
+
+      // cerrar al pulsar fuera del content
+      lightbox.addEventListener('click', (e) => {
+        if (!content.contains(e.target)) closeLightbox();
+      });
+
+      // cerrar con Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>
