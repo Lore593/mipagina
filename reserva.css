@@ -15,7 +15,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(40,40,40,0.9)), url('fondo.png') no-repeat center center fixed;
+  background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(40,40,40,0.9)),
+              url('fondo.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: darken;
   font-family: 'Cormorant Garamond', serif;
@@ -25,6 +26,7 @@ body {
   animation: fadeIn 1.2s ease-in-out;
 }
 
+/* === LOGO === */
 .logo {
   position: fixed;
   top: 15px;
@@ -39,105 +41,117 @@ body {
   filter: drop-shadow(0 0 20px var(--dorado-claro));
 }
 
-/* === CABECERA === */
+/* === SECCIÓN SUPERIOR === */
 .header {
-  margin-top: 100px;
-  margin-bottom: 40px;
+  text-align: center;
+  margin-top: 120px;
+  margin-bottom: 60px;
   animation: fadeInDown 1s ease both;
 }
 .title {
   font-family: 'Italianno', cursive;
   font-size: 3.8rem;
   color: var(--dorado-claro);
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   text-shadow: 0 0 20px var(--brillo-dorado);
-}
-.subtitle {
-  font-size: 1.3rem;
   font-weight: 400;
-  color: var(--dorado-claro);
-  text-shadow: 0 0 10px var(--brillo-dorado);
 }
 
-/* === SECCIONES DEL FORM === */
-.form-section {
-  margin: 30px auto;
-  max-width: 500px;
+/* === CONTENEDOR PRINCIPAL === */
+.reserva-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-}
-.section-title {
-  font-size: 1.6rem;
-  color: var(--dorado-claro);
-  margin-bottom: 15px;
-  text-shadow: 0 0 10px var(--brillo-dorado);
+  gap: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 80px;
+  animation: fadeIn 1.2s ease;
 }
 
-/* === TARJETAS DE SERVICIO === */
+/* === TARJETAS DE SERVICIO REFINADAS === */
 .servicios-container {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
 }
+
 .servicio-card {
-  background: rgba(255,255,255,0.05);
-  padding: 20px 25px;
-  border-radius: 15px;
-  min-width: 180px;
+  background: rgba(212, 175, 55, 0.1); 
+  color: var(--dorado-claro);
+  padding: 10px 20px; 
+  border-radius: 12px;
+  min-width: 150px;
   cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(212,175,55,0.2);
-}
-.servicio-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px var(--brillo-dorado);
+  box-shadow: 0 0 12px rgba(212,175,55,0.2);
+  border: 1px solid rgba(212,175,55,0.3);
 }
 
-/* Animación sutil al seleccionar */
-@keyframes pulseSelect {
-  0% { transform: scale(1); box-shadow: 0 0 20px var(--brillo-dorado); }
-  50% { transform: scale(1.08); box-shadow: 0 0 35px var(--dorado-claro); }
-  100% { transform: scale(1); box-shadow: 0 0 25px var(--dorado-claro); }
+.servicio-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--brillo-dorado);
+  background: rgba(212, 175, 55, 0.2);
 }
+
 .servicio-card.selected {
   background: var(--dorado-claro);
   color: #000;
+  border: 1px solid var(--dorado);
   animation: pulseSelect 0.4s ease;
 }
 
-/* === INPUTS DE FECHA Y HORA === */
-input[type="date"],
-input[type="time"] {
-  padding: 10px 15px;
-  border-radius: 10px;
-  border: none;
-  font-size: 1rem;
-  text-align: center;
-  width: 60%;
-  max-width: 200px;
-  outline: none;
-  box-shadow: 0 0 15px rgba(212,175,55,0.3);
-  transition: all 0.3s ease;
-}
-input[type="date"]:focus,
-input[type="time"]:focus {
-  box-shadow: 0 0 25px var(--brillo-dorado);
+@keyframes pulseSelect {
+  0% { transform: scale(1); box-shadow: 0 0 15px var(--brillo-dorado); }
+  50% { transform: scale(1.08); box-shadow: 0 0 30px var(--dorado-claro); }
+  100% { transform: scale(1); box-shadow: 0 0 20px var(--dorado-claro); }
 }
 
-/* === BOTÓN === */
+/* === INPUTS FECHA Y HORA === */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 70%;
+  max-width: 400px;
+  text-align: left;
+  color: var(--dorado-claro);
+  font-weight: 500;
+}
+input[type="date"], input[type="time"] {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--dorado-claro);
+  background: rgba(255,255,255,0.05);
+  color: var(--texto-blanco);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+input[type="date"]:focus, input[type="time"]:focus {
+  border-color: var(--dorado);
+  box-shadow: 0 0 15px var(--brillo-dorado);
+}
+
+/* === BOTÓN RESERVA === */
+.boton-container {
+  margin-top: 20px;
+}
 .main-btn {
+  display: inline-block;
   background: linear-gradient(145deg, var(--dorado), var(--dorado-claro));
   color: #000;
   font-weight: 600;
   font-size: 1.3rem;
+  text-decoration: none;
   padding: 14px 45px;
   border-radius: 40px;
   box-shadow: 0 0 25px var(--brillo-dorado);
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 .main-btn:hover {
   transform: scale(1.08);
@@ -158,10 +172,11 @@ input[type="time"]:focus {
 /* === RESPONSIVE === */
 @media (max-width: 600px) {
   .title { font-size: 3rem; }
-  .subtitle { font-size: 1.1rem; }
-  .servicio-card { min-width: 140px; padding: 15px; }
-  input[type="date"], input[type="time"] { width: 70%; max-width: 160px; }
+  .main-btn { font-size: 1.1rem; padding: 12px 35px; }
+  .servicio-card { min-width: 120px; padding: 8px 16px; font-size: 0.95rem; }
+  .input-container { width: 85%; }
 }
+
 
 
 
