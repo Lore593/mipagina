@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi trabajo - Lore Rodriguez’s Makeup</title>
 
-  <!-- CARGA CORRECTA DE FUENTES -->
+  <!-- FUENTES -->
   <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="trabajo.css">
 </head>
 <body>
+  <!-- LOGO -->
   <img src="Img.PNG" alt="Logo Lore Rodriguez" class="logo">
 
+  <!-- CONTENEDOR PRINCIPAL -->
   <div class="container">
     <h1 class="title">Mi trabajo</h1>
 
+    <!-- GALERÍA -->
     <div class="gallery">
       <img src="Img1.JPG" alt="Trabajo 1" data-caption="Maquillaje social">
       <img src="Img2.JPG" alt="Trabajo 2" data-caption="Maquillaje social">
@@ -32,6 +35,7 @@
       <img src="Img12.JPG" alt="Trabajo 12" data-caption="Maquillaje social">
     </div>
 
+    <!-- BOTÓN VOLVER -->
     <a href="index.html" class="back-btn">Volver</a>
   </div>
 
@@ -48,11 +52,12 @@
   <script>
     const images = document.querySelectorAll('.gallery img');
     const lightbox = document.getElementById('lightbox');
-    const content = document.querySelector('.lightbox-content');
+    const lightboxContent = document.querySelector('.lightbox-content');
     const lightboxImg = document.querySelector('.lightbox-img');
     const caption = document.querySelector('.caption');
     const closeBtn = document.querySelector('.close');
 
+    // Abrir lightbox
     function openLightbox(src, alt, captionText) {
       lightboxImg.src = src;
       caption.textContent = captionText || alt;
@@ -61,13 +66,14 @@
       closeBtn.focus();
     }
 
+    // Cerrar lightbox
     function closeLightbox() {
       lightbox.classList.remove('open');
       document.body.style.overflow = "";
       lightboxImg.src = "";
     }
 
-    // ⭐ DESHABILITAR CLICK EN MÓVIL
+    // Click en imágenes (deshabilitado en móvil)
     images.forEach(img => {
       img.addEventListener('click', () => {
         if (window.innerWidth <= 600) return;
@@ -75,17 +81,20 @@
       });
     });
 
+    // Botón cerrar
     closeBtn.addEventListener('click', closeLightbox);
 
+    // Click fuera del contenido
     lightbox.addEventListener('click', e => {
-      if (!content.contains(e.target)) closeLightbox();
+      if (!lightboxContent.contains(e.target)) closeLightbox();
     });
 
+    // Escape para cerrar
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
     });
 
-    // Aparición suave de imágenes al hacer scroll
+    // Animación de aparición al hacer scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
