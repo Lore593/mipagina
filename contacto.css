@@ -79,7 +79,7 @@ body {
 /* === CONTENEDOR PRINCIPAL (REDES + MAPA) === */
 .main-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Columna por defecto */
   align-items: center;
   gap: 40px;
   width: 100%;
@@ -94,9 +94,9 @@ body {
   flex-direction: column;
   gap: 15px;
   align-items: center;
+  text-align: center;
   width: 100%;
   max-width: 320px;
-  text-align: center;
 }
 
 .subtitle {
@@ -106,6 +106,8 @@ body {
   color: var(--dorado-claro);
   text-shadow: 0 0 10px var(--brillo-dorado);
   animation: fadeInUp 1s ease both;
+  width: 100%;
+  text-align: center; /* siempre centrado */
 }
 
 .social-btn {
@@ -136,7 +138,7 @@ body {
   box-shadow: 0 0 25px var(--dorado-claro);
 }
 
-/* ✨ ANIMACIÓN ESCALONADA PARA LAS REDES ✨ */
+/* ANIMACIÓN ESCALONADA */
 .social-btn:nth-child(2) { animation-delay: 0.2s; }
 .social-btn:nth-child(3) { animation-delay: 0.4s; }
 .social-btn:nth-child(4) { animation-delay: 0.6s; }
@@ -166,33 +168,31 @@ iframe {
   border: none;
 }
 
-/* === DISTRIBUCIÓN EN DOS COLUMNAS (pantallas grandes) === */
+/* CENTRAR REDES Y MAPA EN PANTALLAS GRANDES */
 @media (min-width: 900px) {
   .main-content {
     flex-direction: row;
     justify-content: center;
-    align-items: center; /* centra verticalmente el mapa con las redes */
+    align-items: flex-start;
     gap: 80px;
   }
   .social-section {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
   .map-container {
     flex: 1;
     max-width: 500px;
+    align-self: center;
   }
 }
 
-/* === BOTÓN VOLVER (PIE DE PÁGINA CENTRADO) === */
+/* BOTÓN VOLVER CENTRADO PIE DE PÁGINA */
 .footer {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-bottom: 60px;
-  animation: fadeIn 1.2s ease;
 }
-
 .back-btn {
   background: linear-gradient(145deg, var(--dorado), var(--dorado-claro));
   color: #000;
@@ -212,31 +212,11 @@ iframe {
 }
 
 /* === ANIMACIONES === */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-25px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUpDelay {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInZoom {
-  0% { opacity: 0; transform: scale(0.8); }
-  60% { opacity: 1; transform: scale(1.05); }
-  100% { opacity: 1; transform: scale(1); }
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-25px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUpDelay { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInZoom { 0% { opacity: 0; transform: scale(0.8); } 60% { opacity: 1; transform: scale(1.05); } 100% { opacity: 1; transform: scale(1); } }
 
 /* === RESPONSIVE === */
 @media (max-width: 600px) {
@@ -245,3 +225,4 @@ iframe {
   .social-btn span { font-size: 0.95rem; }
   iframe { height: 220px; }
 }
+
