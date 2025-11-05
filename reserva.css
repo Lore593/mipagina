@@ -28,7 +28,7 @@ body {
 
 /* === LOGO === */
 .logo {
-  position: fixed;
+  position: absolute;
   top: 15px;
   left: 15px;
   width: 70px;
