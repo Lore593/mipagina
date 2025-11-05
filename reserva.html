@@ -19,7 +19,7 @@
   <!-- TÍTULO -->
   <header class="header">
     <h1 class="title">Reserva tu cita</h1>
-    <p class="subtitle">Elige tu servicio, fecha y hora de manera cómoda</p>
+    <p class="subtitle">Elige tu servicio, fecha y hora de manera cómoda ✨</p>
   </header>
 
   <!-- CONTENEDOR PRINCIPAL -->
@@ -41,6 +41,9 @@
       <label for="hora" class="label">Selecciona la hora</label>
       <input type="time" id="hora" min="05:00" max="22:00">
 
+      <!-- RESUMEN DINÁMICO -->
+      <p id="resumen" class="resumen">Aún no se ha seleccionado nada.</p>
+
       <!-- BOTÓN -->
       <button id="reservaBtn">Termina tu reserva</button>
     </div>
@@ -49,23 +52,40 @@
 
   <script>
     let servicioSeleccionado = "";
+    const fechaInput = document.getElementById('fecha');
+    const horaInput = document.getElementById('hora');
+    const resumen = document.getElementById('resumen');
+
+    // Función para actualizar el resumen
+    function actualizarResumen() {
+      if (servicioSeleccionado && fechaInput.value && horaInput.value) {
+        resumen.textContent = `Has elegido ${servicioSeleccionado} el ${fechaInput.value} a las ${horaInput.value} ✨`;
+      } else if (servicioSeleccionado) {
+        resumen.textContent = `Servicio seleccionado: ${servicioSeleccionado}.`;
+      } else {
+        resumen.textContent = "Aún no se ha seleccionado nada.";
+      }
+    }
 
     // Selección de tarjetas
     const cards = document.querySelectorAll('.servicio-card');
     cards.forEach(card => {
       card.addEventListener('click', function() {
-        // Desmarcar todos
         cards.forEach(c => c.classList.remove('selected'));
-        // Marcar este
         this.classList.add('selected');
         servicioSeleccionado = this.dataset.servicio;
+        actualizarResumen();
       });
     });
 
+    // Actualizar resumen al cambiar fecha o hora
+    fechaInput.addEventListener('change', actualizarResumen);
+    horaInput.addEventListener('change', actualizarResumen);
+
     // Botón de reserva
     document.getElementById('reservaBtn').addEventListener('click', () => {
-      const fecha = document.getElementById('fecha').value;
-      const hora = document.getElementById('hora').value;
+      const fecha = fechaInput.value;
+      const hora = horaInput.value;
 
       if (!servicioSeleccionado || !fecha || !hora) {
         alert("Por favor, completa todos los campos.");
@@ -80,5 +100,4 @@
 
 </body>
 </html>
-
 
