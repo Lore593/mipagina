@@ -1,5 +1,5 @@
-/* Importar fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&display=swap');
+/* === IMPORTAR FUENTES === */
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@400;500;600&display=swap');
 
 /* === VARIABLES DE COLOR === */
 :root {
@@ -18,7 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Cormorant Garamond', serif;
   color: var(--texto-blanco);
   text-align: center;
   padding: 20px;
@@ -49,20 +49,23 @@ body {
 
 /* === TÍTULOS === */
 .title {
-  font-family: 'Parisienne', cursive;
-  font-size: 3rem;
+  font-family: 'Italianno', cursive;
+  font-size: 4rem;
   color: var(--texto-blanco);
-  text-shadow: 0 0 15px var(--brillo-dorado);
-  margin-bottom: 40px;
+  text-shadow: 0 0 18px var(--brillo-dorado);
+  margin-bottom: 30px;
   animation: float 3s ease-in-out infinite;
+  letter-spacing: 1px;
 }
 
 .subtitle {
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 500;
   color: var(--texto-blanco);
   text-shadow: 0 0 10px var(--brillo-dorado);
   margin-bottom: 25px;
+  letter-spacing: 0.5px;
 }
 
 /* === BOTONES === */
@@ -74,8 +77,9 @@ body {
 }
 
 .btn {
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.6rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
   background: linear-gradient(145deg, var(--dorado), var(--dorado-claro));
   color: #000;
   border: none;
@@ -85,6 +89,7 @@ body {
   box-shadow: 0 0 20px var(--brillo-dorado);
   transition: all 0.3s ease;
   text-decoration: none;
+  letter-spacing: 0.5px;
 }
 
 .btn:hover {
@@ -102,8 +107,9 @@ body {
   text-decoration: none;
   padding: 12px 35px;
   border-radius: 40px;
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.4rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
   box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
   transition: all 0.3s ease;
 }
@@ -123,10 +129,11 @@ body {
   text-decoration: none;
   padding: 10px 30px;
   border-radius: 40px;
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
   box-shadow: 0 0 15px var(--brillo-dorado);
   transition: all 0.3s ease;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .back-btn:hover {
@@ -160,13 +167,17 @@ iframe:hover {
 /* === MÓVILES === */
 @media (max-width: 600px) {
   .title {
-    font-size: 2.4rem;
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
   }
 
   .btn,
   .back-btn,
   .whatsapp-btn {
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: 10px 25px;
   }
 
