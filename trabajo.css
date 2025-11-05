@@ -1,11 +1,11 @@
 /* === IMPORTAR FUENTES === */
-@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@400;600&display=swap');
 
 /* === ESTILO GENERAL === */
 body {
   background-color: #000;
   color: #fff;
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Cormorant Garamond', serif;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -30,11 +30,12 @@ body {
 
 /* === TÍTULO === */
 .title {
-  font-family: 'Parisienne', cursive;
-  font-size: 2.8rem;
+  font-family: 'Italianno', cursive;
+  font-size: 3rem;
   color: gold;
   margin-bottom: 40px;
   text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* === GALERÍA === */
@@ -52,11 +53,39 @@ body {
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .gallery img:hover {
   transform: scale(1.05);
   box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+/* === EFECTO LIGHTBOX === */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+  animation: zoomIn 0.5s ease;
+}
+
+.lightbox:target {
+  display: flex;
 }
 
 /* === BOTÓN VOLVER === */
@@ -68,9 +97,8 @@ body {
   color: #000;
   text-decoration: none;
   border-radius: 30px;
-  font-family: 'Parisienne', cursive;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-family: 'Italianno', cursive;
+  font-size: 1.8rem;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
   transition: all 0.3s ease;
 }
@@ -81,75 +109,15 @@ body {
   box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
 }
 
-/* === LIGHTBOX === */
-#lightbox {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 0.4s ease;
-}
-
-.lightbox-img {
-  max-width: 90%;
-  max-height: 85%;
-  border-radius: 10px;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-  transform: scale(0.8);
-  animation: zoomIn 0.4s ease forwards;
-}
-
-.close {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  color: gold;
-  font-size: 2.5rem;
-  cursor: pointer;
-  font-family: 'Cormorant Garamond', serif;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.close:hover {
-  color: #f7e27e;
-  transform: scale(1.2);
-}
-
-/* === ANIMACIONES DEL LIGHTBOX === */
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
+/* === ANIMACIONES === */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 600px) {
-  .close {
-    top: 15px;
-    right: 25px;
-    font-size: 2rem;
-  }
-
-  .lightbox-img {
-    max-width: 95%;
-    max-height: 80%;
-  }
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 /* === RESPONSIVE === */
@@ -159,23 +127,20 @@ body {
     top: 15px;
     left: 15px;
   }
-
   .title {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
-
   .gallery {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 15px;
   }
-
   .gallery img {
     max-width: 100%;
   }
-
   .back-btn {
     margin-top: 30px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 10px 25px;
   }
 }
+
