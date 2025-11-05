@@ -71,7 +71,7 @@
         return;
       }
 
-      const mensaje = `¡Hola Lore! Quisiera realizarme ${servicioSeleccionado} el día ${fecha} a las ${hora} ✨`;
+      const mensaje = `¡Hola Lore! Quisiera realizarme un ${servicioSeleccionado}, el día ${fecha} a las ${hora} ✨`;
       const whatsappUrl = `https://api.whatsapp.com/send?phone=593969426732&text=${encodeURIComponent(mensaje)}`;
 
       window.open(whatsappUrl, '_blank');
