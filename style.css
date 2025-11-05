@@ -28,6 +28,7 @@ body {
               url('fondo.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: darken;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
 /* === LOGO === */
@@ -90,12 +91,30 @@ body {
   transition: all 0.3s ease;
   text-decoration: none;
   letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: skewX(-20deg);
+  transition: 0.4s;
+}
+
+.btn:hover::after {
+  left: 100%;
 }
 
 .btn:hover {
   transform: scale(1.08);
   background: linear-gradient(145deg, var(--dorado-claro), var(--dorado));
-  box-shadow: 0 0 30px var(--dorado-claro);
+  box-shadow: 0 0 35px var(--dorado-claro);
 }
 
 /* === BOTÓN WHATSAPP === */
@@ -164,6 +183,11 @@ iframe:hover {
   50% { transform: translateY(-10px); }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* === MÓVILES === */
 @media (max-width: 600px) {
   .title {
@@ -191,4 +215,3 @@ iframe:hover {
     left: 10px;
   }
 }
-
